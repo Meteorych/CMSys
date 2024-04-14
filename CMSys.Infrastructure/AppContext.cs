@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CMSys.Infrastructure;
 
-internal class AppContext : DbContext
+public class AppContext : DbContext
 {
-    internal AppContext(DbContextOptions options) : base(options)
+    public AppContext(DbContextOptions options) : base(options)
     {
     }
 
