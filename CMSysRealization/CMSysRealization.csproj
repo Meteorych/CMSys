@@ -16,9 +16,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CMSys.Common\CMSys.Common.csproj" />
+    <ProjectReference Include="..\CMSys.Core\CMSys.Core.csproj" />
     <ProjectReference Include="..\CMSys.Database\CMSys.Database.sqlproj" />
     <ProjectReference Include="..\CMSys.Infrastructure\CMSys.Infrastructure.csproj" />
   </ItemGroup>
