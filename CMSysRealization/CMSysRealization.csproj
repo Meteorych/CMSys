@@ -26,4 +26,8 @@
     <ProjectReference Include="..\CMSys.Infrastructure\CMSys.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>
