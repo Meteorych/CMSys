@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using CMSys.Common;
 using CMSys.Common.Helpers;
+using Microsoft.AspNet.Identity;
 
 namespace CMSys.Core.Entities.Membership;
 
