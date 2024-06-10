@@ -3,6 +3,7 @@ using CMSys.Core.Entities.Catalog;
 using CMSys.Core.Entities.Membership;
 using CMSys.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace CMSys.Infrastructure;
 
@@ -29,5 +30,16 @@ public class AppContext : DbContext
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
         builder.Properties<DateOnly>().HaveConversion<DateOnlyConverter>().HaveColumnType("date");
+    }
+}
+
+public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<AppContext>
+{
+    public AppContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<AppContext>();
+        optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMSys.Database;Trusted_Connection=True;MultipleActiveResultSets=true");
+
+        return new AppContext(optionsBuilder.Options);
     }
 }

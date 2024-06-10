@@ -7,9 +7,10 @@ var connectionString = builder.Configuration.GetConnectionString("MainDbConnecti
 builder.Services.AddDbContext<CMSys.Infrastructure.AppContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -27,6 +28,11 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Courses}/{action=Index}/{id?}");
 
 app.UseRouting();
 
