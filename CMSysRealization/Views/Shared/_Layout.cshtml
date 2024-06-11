@@ -11,27 +11,28 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CMSysRealization</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
                     <partial name="_LoginPartial" />
-                </div>
             </div>
         </nav>
+        <nav class="collapse d-lg-block sidebar collapse bg-blue">
+                <div class="position-sticky">
+                    <div class="list-group list-group-flush mx-3 mt-4">
+                        <a asp-controller="Courses" asp-action="Index">Courses</a>
+                        <a asp-controller="Trainers" asp-action="Index">Trainers</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="CourseGroups" asp-action="Index">Course's Groups</a>
+                        <a asp-controller="TrainerGroups" asp-action="Index">Trainer's Groups</a>
+                        <a asp-controller="CoursesList" asp-action="Index">Courses List</a>
+                        <a asp-controller="TrainersList" asp-action="Index">Trainers List</a>
+                    }
+                </div>
+                </div>
+        </nav>
     </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
