@@ -4,9 +4,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CMSys.Common\CMSys.Common.csproj" />
   </ItemGroup>
 </Project>

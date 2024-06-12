@@ -4,6 +4,10 @@
       "type": "mssql",
       "connectionId": "ConnectionStrings:IdentityDbContext",
       "dynamicId": null
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:ApplicationUserContextConnection"
     }
   }
 }
