@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using CMSysRealization.Data;
-using CMSys.Core.Entities.Membership;
 using CMSysRealization.Helpers;
 using CMSysRealization.Areas.Identity.Data;
 using AppContext = CMSys.Infrastructure.AppContext;
@@ -8,15 +7,18 @@ using AppContext = CMSys.Infrastructure.AppContext;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("MainDbConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("MainDbConnection") 
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<AppContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDbContext<ApplicationUserContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddSingleton<AppContext>();
-
+builder.Services.AddScoped<AppContext>();
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
+
+builder.Services.AddDbContext<ApplicationUserContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UserIdentityConnection") 
+    ?? throw new InvalidOperationException("Connection string 'UserIdentityConnection' not found.")));
+
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationUserContext>();
 
 builder.Services.AddControllersWithViews();
